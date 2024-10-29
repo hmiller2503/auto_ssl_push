@@ -1,0 +1,6 @@
+# 忽略私钥和证书文件
+private.key
+certificate.crt
+private_new.key
+certificate_new.crt
+base_config.yml

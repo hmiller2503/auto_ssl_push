@@ -1,0 +1,22 @@
+# ucloud的Api请求地址
+base_url: ""
+# ucloud IAM用户的公钥/Api公钥
+public_key: ""
+# ucloud IAM用户的密钥/Api密钥
+private_key: ""
+# ucloud 请求的地域节点
+region: "cn-bj2"
+# 通知模式 "email" 或 "wx_webhook" 两者可选其一 或两者都选 或两者都不选(仅记录在本地日志中)
+notify_type: "email"
+# 邮箱SMTP服务器地址
+email_host: ""
+# 邮箱SMTP服务端口
+email_port: ""
+# 发件人邮箱/登录邮箱
+email_username: ""
+# 邮箱登录密码/专用密码
+email_pwd: ""
+# 通知接收人
+email_receiver: ""
+# 企业微信机器人webhook地址
+wx_webhook_url: ""
