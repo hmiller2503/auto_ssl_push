@@ -50,9 +50,9 @@ func (client *UCloudClient) HandleFailure(operation string, err error) {
 }
 func StartProgramNotify() {
 	timestamp := time.Now().Format("2006-01-02 15:04:05")
-	utils.SendNotify(fmt.Sprint("自动同步SSL至UCLOUD程序完美结束运行 服务器时间: ", timestamp))
+	utils.SendNotify(fmt.Sprint("自动同步SSL 至UCLOUD程序完美结束运行 服务器时间: ", timestamp))
 }
 func EndProgramNotify() {
 	timestamp := time.Now().Format("2006-01-02 15:04:05")
-	utils.SendNotify(fmt.Sprint("自动同步SSL至UCLOUD程序完美结束运行 服务器时间: ", timestamp))
+	utils.SendNotify(fmt.Sprint("自动同步SSL 至UCLOUD程序完美结束运行 服务器时间: ", timestamp))
 }
