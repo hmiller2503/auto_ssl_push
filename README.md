@@ -33,3 +33,18 @@
 ```bash
 ./autoUCDNcert -certName="证书名" -certPath="证书文件路径" -keyPath="密钥文件路径"
 ```
+
+### 1Panel 面板配置简介
+
+- 开启"推送证书到本地目录"
+- 开启"申请证书之后执行脚本"
+
+```bash
+#脚本内容中路径仅供参考，应以自己设置的实际路径为准
+cd 本项目的目录 && sudo 本项目的目录/打包后的项目文件 -certName="证书名" -certPath="证书文件路径" -keyPath="密钥文件路径"
+#如果与长亭雷池WAF配合使用，则可以参考如下进行配置
+sudo cp -f 证书文件路径  /data/safeline/resources/nginx/certs/cert_1.crt # cert_1.crt中的cert_1是根据在雷池WAF中添加证书时从1向上递增的
+sudo cp -f 密钥文件路径  /data/safeline/resources/nginx/certs/cert_1.key # 同如上解释
+sudo docker restart safeline-tengine
+sudo docker restart safeline-mgt
+```
