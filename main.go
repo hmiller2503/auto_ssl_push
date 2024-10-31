@@ -120,7 +120,7 @@ func main() {
 		client.LogOperation("上传证书失败，终止操作: " + err.Error())
 		return
 	}
-	time.Sleep(10 * time.Second)
+	time.Sleep(30 * time.Second)
 
 	for _, domainID := range domainIDs {
 		mu.Lock()
@@ -130,7 +130,7 @@ func main() {
 			client.LogOperation(fmt.Sprintf("开启 HTTPS 失败, DomainID: %s, 错误: %v", domainID, err))
 			client.HandleFailure("ChangeHttps", err)
 		}
-		time.Sleep(2 * time.Second)
+		time.Sleep(5 * time.Second)
 	}
 	client.LogOperation("===================END==========================")
 	client.LogOperation("")
