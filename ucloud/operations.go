@@ -50,8 +50,10 @@ func (client *UCloudClient) GetDomainIDsForCert(certName string) ([]string, erro
 		}
 	}
 
+	// 如果未找到匹配的证书名称，返回空的域名列表
 	if len(domains) == 0 {
-		return nil, fmt.Errorf("未找到匹配的证书名称: %s", certName)
+		client.LogOperation(fmt.Sprintf("未找到匹配的证书名称: %s，返回空域名列表", certName))
+		return []string{}, nil
 	}
 
 	domainReq := client.UcdnClient.NewGetUcdnDomainInfoListRequest()
@@ -71,10 +73,7 @@ func (client *UCloudClient) GetDomainIDsForCert(certName string) ([]string, erro
 		}
 	}
 
-	if len(domainIDs) == 0 {
-		return nil, fmt.Errorf("未找到匹配的域名 ID")
-	}
-
+	// 如果域名 ID 列表为空，返回空列表
 	return domainIDs, nil
 }
 

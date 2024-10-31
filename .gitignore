@@ -4,3 +4,4 @@ certificate.crt
 private_new.key
 certificate_new.crt
 base_config.yml
+*.zip

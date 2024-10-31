@@ -23,6 +23,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"path/filepath"
 	"sync"
 	"time"
 )
@@ -35,7 +36,15 @@ func main() {
 	} else {
 		configUrl = "config.yml"
 	}
-	config.InitConfig(configUrl)
+	// 获取当前工作目录
+	workDir, err := os.Getwd()
+	if err != nil {
+		fmt.Println("获取工作目录失败: ", err)
+		return
+	}
+	// 构建 config 文件的完整路径
+	configPath := filepath.Join(workDir, configUrl)
+	config.InitConfig(configPath)
 
 	var mu sync.Mutex
 
@@ -76,7 +85,8 @@ func main() {
 		domainIDs, err = client.GetDomainIDsForCert(*certName)
 		if err != nil {
 			client.LogOperation(fmt.Sprintf("获取域名 ID 失败: %v", err))
-			return
+		} else if len(domainIDs) == 0 {
+			client.LogOperation("未找到任何域名 ID, 继续执行后续操作")
 		}
 	} else {
 		domainIDs = append(domainIDs, *domainID)
