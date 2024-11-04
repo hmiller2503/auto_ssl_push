@@ -22,7 +22,7 @@
 
 ## 使用方法
 
-### 为 CDN 单域名推送新证书
+### 为 CDN 单域名推送新证书1
 
 ```bash
 ./autoUCDNcert -domainID="域名资源id" -certName="证书名" -certPath="证书文件路径" -keyPath="密钥文件路径"
